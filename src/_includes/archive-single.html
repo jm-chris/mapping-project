@@ -22,6 +22,15 @@
       {% if teaser_image %}
         <div class="archive__item-teaser">
           <img src="{{ teaser_image }}" alt="{{ post.title }}">
+          
+          {%- comment -%}
+          Add access badge overlay on image (top-right corner)
+          {%- endcomment -%}
+          {% if post.access %}
+            <span class="access-badge-overlay access-{{ post.access | slugify }}">
+              {{ post.access }}
+            </span>
+          {% endif %}
         </div>
       {% endif %}
     {% endif %}
@@ -34,6 +43,16 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
+    
+    {%- comment -%}
+    Show alternate title (Chinese) if it exists
+    {%- endcomment -%}
+    {% if post.alternatetitle and include.type == 'grid' %}
+      <p class="archive__item-alternate-title" style="width: 180px; margin: 0 auto; font-size: 0.55rem; color: #666; margin-top: 0.25em;">
+        {{ post.alternatetitle }}
+      </p>
+    {% endif %}
+    
     {% include page__meta.html type=include.type %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>

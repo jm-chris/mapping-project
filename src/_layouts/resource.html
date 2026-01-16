@@ -7,20 +7,54 @@ search support: true
 {% if page.alternatetitle %}
 <h6>ALTERNATE TITLE</h6>
 {{ page.alternatetitle }}
+<br>
+<br>
 {% endif %}
-<br>
-<br>
+
 <h6>CATEGORY</h6>
 <a href="/directorycategory/#{{ page.category | slugify }}">{{ page.category }}</a>
 <br>
 <br>
+
+{% if page.institution %}
 <h6>INSTITUTION</h6>
 {{ page.institution }}
 <br>
 <br>
+{% endif %}
+
+{% if page.access %}
+<h6>ACCESS</h6>
+<span class="access-badge access-{{ page.access | slugify }}">{{ page.access }}</span>
+<br>
+<br>
+{% endif %}
+
 <h6>URL</h6>
-<a target="_blank" label="external link to {{ page.title }}" href="{{ page.external_url }}">{{ page.external_url }}</a>
+<a target="_blank" label="external link to {{ page.title }}" href="{{ page.externalurl }}">{{ page.externalurl }}</a>
 <br>
 <br>
+
 <h6>DESCRIPTION</h6>
 {{ page.description }}
+<br>
+<br>
+
+{% if page.sourcelist %}
+<h6>SOURCE LIST</h6>
+{{ page.sourcelist }}
+<br>
+<br>
+{% endif %}
+
+{% if page.tags %}
+<h6>TAGS</h6>
+{{ page.tags }}
+<br>
+<br>
+{% endif %}
+
+{% if page.lastmodified %}
+<h6>LAST MODIFIED</h6>
+{{ page.lastmodified }}
+{% endif %}

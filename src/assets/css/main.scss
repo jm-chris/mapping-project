@@ -519,3 +519,75 @@ a {
     display: block !important;
   }
 }
+
+// ============================================================================
+// 10. RESOURCE PAGE FIELDS (Access Badges & Metadata)
+// ============================================================================
+
+// Access badge styling for resource pages
+.access-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.access-open-access {
+  background-color: #28a745;
+  color: white;
+}
+
+.access-subscription {
+  background-color: #ffc107;
+  color: #333;
+}
+
+// Optional: Add hover effect
+.access-badge:hover {
+  opacity: 0.9;
+}
+
+// Last modified styling - make it subtle
+.last-modified-date {
+  color: #666;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+// ============================================================================
+// 11. ACCESS BADGE OVERLAY FOR GRID TILES
+// ============================================================================
+
+// Position badge in top-right corner of teaser image
+.archive__item-teaser {
+  position: relative;
+}
+
+.access-badge-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-family: 'IBM Plex Mono', monospace;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.access-badge-overlay.access-open-access {
+  background-color: #28a745;
+  color: white;
+}
+
+.access-badge-overlay.access-subscription {
+  background-color: #ffc107;
+  color: #333;
+}
