@@ -11,6 +11,31 @@ toc_sticky: true
 ---
 
 <style>
+/* Landing page visual style applied to tutorial */
+h2 {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-weight: 300 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #1a1a1a !important;
+  border-bottom: 1px solid #d0d0d0 !important;
+  padding-bottom: 0.5rem !important;
+  margin: 2.5rem 0 1.2rem 0 !important;
+}
+h3 {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-weight: 400 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.05em !important;
+  color: #2B3AA8 !important;
+  margin: 2rem 0 1rem 0 !important;
+}
+p, li, td, th {
+  font-size: 0.95rem !important;
+  line-height: 1.75 !important;
+  color: #2e2e2e !important;
+}
 .workflow-note {
   background: #FAFAFA;
   border-left: 4px solid #2B3AA8;
@@ -37,20 +62,7 @@ This tutorial provides a comprehensive, step-by-step workflow for researchers in
 
 By following this guide, you will learn how to organize your scanned files, extract Chinese text using Optical Character Recognition (OCR), leverage Large Language Models (LLMs) to automate metadata extraction, set up an Omeka Classic repository, and implement a robust full-text search engine capable of handling Chinese characters.
 
-### Lesson Goals
 
-By the end of this tutorial, you will be able to:
-
-- Establish a consistent, machine-readable file naming and folder structure for your scanned documents
-- Pre-process scanned images to maximize OCR accuracy
-- Use OCRmyPDF, ABBYY FineReader, or PaddleOCR to produce searchable PDFs from Chinese-language scans
-- Write a Python script that uses an LLM API to extract structured metadata from OCR text
-- Build a controlled subject vocabulary using AI-assisted tagging
-- Install and configure Omeka Classic with the CSV Import, PDF Text, and Search by Metadata plugins
-- Prepare and import a bulk metadata spreadsheet into Omeka
-- Configure Apache Solr with the Smart Chinese Analyzer for full-text Chinese search
-
----
 
 ## Phase 1: Document Preparation and Advanced OCR
 
