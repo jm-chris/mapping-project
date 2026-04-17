@@ -78,7 +78,155 @@ p, li, td, th {
   line-height: 1.7;
   color: #444;
 }
+
+/* ── Progress-aware sticky TOC ── */
+#toc-rail {
+  position: fixed;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+#toc-rail .toc-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  z-index: 0;
+}
+#toc-rail .toc-progress {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #2B3AA8;
+  border-radius: 2px;
+  height: 0%;
+  z-index: 1;
+  transition: height 0.15s ease;
+}
+.toc-dot-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 0;
+}
+.toc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #ccc;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: block;
+}
+.toc-dot.h2-dot {
+  width: 10px;
+  height: 10px;
+}
+.toc-dot.active {
+  background: #2B3AA8;
+  box-shadow: 0 0 0 1px #2B3AA8;
+  transform: scale(1.3);
+}
+.toc-tooltip {
+  position: absolute;
+  right: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.toc-dot-wrap:hover .toc-tooltip {
+  opacity: 1;
+}
 </style>
+
+<div id="toc-rail">
+  <div class="toc-track"></div>
+  <div class="toc-progress" id="toc-progress-bar"></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="building-a-digital-archive-for-china-studies"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="phase-1-document-preparation-and-advanced-ocr"></a><span class="toc-tooltip">Phase 1: Document Prep &amp; OCR</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-11-file-naming-conventions"></a><span class="toc-tooltip">1.1 File Naming</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-12-image-pre-processing"></a><span class="toc-tooltip">1.2 Image Pre-Processing</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-13-running-ocr-on-chinese-documents"></a><span class="toc-tooltip">1.3 Running OCR</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-14-the-character-simplification-problem"></a><span class="toc-tooltip">1.4 Character Simplification</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="phase-2-ai-assisted-metadata-and-taxonomy-generation"></a><span class="toc-tooltip">Phase 2: AI Metadata</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-21-extracting-metadata-with-an-llm"></a><span class="toc-tooltip">2.1 Metadata Extraction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-22-building-a-taxonomy-through-ai-subject-tagging"></a><span class="toc-tooltip">2.2 AI Subject Tagging</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="phase-3-setting-up-omeka-classic"></a><span class="toc-tooltip">Phase 3: Omeka Setup</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-31-installation"></a><span class="toc-tooltip">3.1 Installation</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-32-installing-core-plugins"></a><span class="toc-tooltip">3.2 Core Plugins</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="phase-4-metadata-schema-and-bulk-import"></a><span class="toc-tooltip">Phase 4: Bulk Import</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-41-structuring-your-csv"></a><span class="toc-tooltip">4.1 CSV Structure</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-42-running-the-import"></a><span class="toc-tooltip">4.2 Running Import</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="phase-5-configuring-chinese-full-text-search"></a><span class="toc-tooltip">Phase 5: Full-Text Search</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-51-apache-solr-with-the-smart-chinese-analyzer"></a><span class="toc-tooltip">5.1 Apache Solr</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="step-52-advanced-search-as-a-fallback"></a><span class="toc-tooltip">5.2 Advanced Search</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="summary-the-complete-workflow"></a><span class="toc-tooltip">Summary</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="references"></a><span class="toc-tooltip">References</span></div>
+</div>
+
+<script>
+(function() {
+  var dots = document.querySelectorAll('.toc-dot');
+  var progressBar = document.getElementById('toc-progress-bar');
+  var rail = document.getElementById('toc-rail');
+
+  // Build section map: dot index -> heading element
+  var sections = [];
+  dots.forEach(function(dot, i) {
+    var id = dot.getAttribute('data-target');
+    var el = document.getElementById(id);
+    if (el) sections.push({ dot: dot, el: el, index: i });
+    dot.addEventListener('click', function() {
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  function update() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.height = progress + '%';
+
+    // Find active section
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var rect = sections[i].el.getBoundingClientRect();
+      if (rect.top <= 120) active = i;
+    }
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    if (sections[active]) sections[active].dot.classList.add('active');
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 
 ## Building a Digital Archive for China Studies
 
