@@ -591,39 +591,4 @@ a {
   background-color: #ffc107;
   color: #333;
 }
-// ============================================================================
-// 12. DATABASE WORKFLOWS PAGE — FULL-WIDTH LAYOUT
-// ============================================================================
 
-// The Minimal Mistakes theme has two media-query rules that offset .page when
-// a sidebar is present:
-//   @media (min-width: 64em) { .page { float: right; width: calc(100% - 200px); } }
-//   @media (min-width: 80em) { .page { width: calc(100% - 300px); } }
-// These rules must be overridden with !important to reclaim full-width layout
-// when the sidebar is hidden.
-
-@media (min-width: 64em) {
-  #main article.page,
-  #main .page {
-    float: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-}
-
-@media (min-width: 80em) {
-  #main article.page,
-  #main .page {
-    float: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-  }
-}
