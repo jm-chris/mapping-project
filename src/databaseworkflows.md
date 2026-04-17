@@ -13,13 +13,25 @@ toc: false
 /* Hide the built-in left sidebar and force full-width content */
 #main .sidebar {
   display: none !important;
+  width: 0 !important;
 }
+/* Override the Minimal Mistakes sidebar-offset margin and padding */
+#main article.page,
 #main .page {
   float: none !important;
   width: 100% !important;
   max-width: 860px !important;
-  margin: 0 auto !important;
-  padding: 0 2rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+/* Also override the inner-wrap padding that Minimal Mistakes adds */
+#main .page__inner-wrap {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  float: none !important;
+  width: 100% !important;
 }
 
 /* Floating toggle buttons */
