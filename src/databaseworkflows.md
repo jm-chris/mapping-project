@@ -20,11 +20,11 @@ toc: false
 #main .page {
   float: none !important;
   width: 100% !important;
-  max-width: 860px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 3rem !important;
+  padding-right: 3rem !important;
 }
 /* Also override the inner-wrap padding that Minimal Mistakes adds */
 #main .page__inner-wrap {
