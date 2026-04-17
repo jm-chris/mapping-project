@@ -607,9 +607,11 @@ a {
   #main .page {
     float: none !important;
     width: 100% !important;
-    max-width: 860px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
   }
 }
 
@@ -618,8 +620,10 @@ a {
   #main .page {
     float: none !important;
     width: 100% !important;
-    max-width: 860px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
   }
 }
