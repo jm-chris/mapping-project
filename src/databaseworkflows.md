@@ -4,13 +4,146 @@ title: "Database Workflows"
 permalink: /databaseworkflows/
 sidebar:
   nav: "main_sidebar"
-toc: true
-toc_label: "Contents"
-toc_icon: "list"
-toc_sticky: true
+toc: false
 ---
 
 <style>
+/* ── Overlay pane system ── */
+
+/* Hide the built-in left sidebar and force full-width content */
+#main .sidebar {
+  display: none !important;
+}
+#main .page {
+  float: none !important;
+  width: 100% !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+}
+
+/* Floating toggle buttons */
+.pane-toggle {
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 0.45rem 0.85rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2B3AA8;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  transition: background 0.15s;
+  user-select: none;
+}
+.pane-toggle:hover {
+  background: #f5f5f5;
+}
+#nav-toggle  { top: 80px; left: 18px; }
+#toc-toggle  { top: 80px; right: 18px; }
+
+/* Overlay backdrop */
+.pane-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1001;
+}
+.pane-backdrop.open { display: block; }
+
+/* Slide-in pane */
+.overlay-pane {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+  z-index: 1002;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  box-shadow: 2px 0 16px rgba(0,0,0,0.12);
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+.overlay-pane.right {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+  box-shadow: -2px 0 16px rgba(0,0,0,0.12);
+}
+.overlay-pane.open {
+  transform: translateX(0);
+}
+
+/* Pane close button */
+.pane-close {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+.pane-close:hover { color: #2B3AA8; }
+
+/* Nav pane links */
+#nav-pane .nav__title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1rem;
+}
+#nav-pane ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#nav-pane ul li a {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: #2e2e2e;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+#nav-pane ul li a:hover { color: #2B3AA8; }
+
+/* TOC pane */
+#toc-pane .toc-pane-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1rem;
+}
+#toc-pane nav a {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  color: #2e2e2e;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+#toc-pane nav a:hover { color: #2B3AA8; }
+#toc-pane nav a.toc-h3 { padding-left: 1rem; font-size: 0.78rem; color: #555; }
+
 /* Landing page visual style applied to tutorial */
 h2 {
   font-family: 'IBM Plex Mono', monospace !important;
@@ -394,3 +527,69 @@ For a collection of 500 documents, the full workflow typically takes 2–4 weeks
 [14] Omeka Classic User Manual. "PDF Text." Accessed April 16, 2026. <https://omeka.org/classic/docs/Plugins/PdfText/>
 
 [15] Omeka Classic User Manual. "Working with Dublin Core." Accessed April 16, 2026. <https://omeka.org/classic/docs/Content/Working_with_Dublin_Core/>
+
+<!-- ── Overlay pane HTML ── -->
+<div class="pane-backdrop" id="backdrop"></div>
+
+<!-- Left nav pane -->
+<div class="overlay-pane" id="nav-pane">
+  <button class="pane-close" id="nav-close">&larr; Close</button>
+  <div class="nav__title">Navigation</div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/directory/">Explore Resources</a></li>
+    <li><a href="/accesspartners/">Library Partners</a></li>
+    <li><a href="/databaseworkflows/">Database Workflows</a></li>
+  </ul>
+</div>
+
+<!-- Right TOC pane -->
+<div class="overlay-pane right" id="toc-pane">
+  <button class="pane-close" id="toc-close">Close &rarr;</button>
+  <div class="toc-pane-title">Contents</div>
+  <nav id="toc-links"></nav>
+</div>
+
+<!-- Toggle buttons -->
+<button class="pane-toggle" id="nav-toggle">&#9776; Menu</button>
+<button class="pane-toggle" id="toc-toggle">Contents &#9776;</button>
+
+<script>
+(function() {
+  // Build TOC from headings
+  var toc = document.getElementById('toc-links');
+  var headings = document.querySelectorAll('.page__content h2, .page__content h3');
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    }
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    if (h.tagName === 'H3') a.classList.add('toc-h3');
+    a.addEventListener('click', function() { closeAll(); });
+    toc.appendChild(a);
+  });
+
+  var backdrop = document.getElementById('backdrop');
+  var navPane  = document.getElementById('nav-pane');
+  var tocPane  = document.getElementById('toc-pane');
+
+  function openPane(pane) {
+    closeAll();
+    pane.classList.add('open');
+    backdrop.classList.add('open');
+  }
+  function closeAll() {
+    navPane.classList.remove('open');
+    tocPane.classList.remove('open');
+    backdrop.classList.remove('open');
+  }
+
+  document.getElementById('nav-toggle').addEventListener('click', function() { openPane(navPane); });
+  document.getElementById('toc-toggle').addEventListener('click', function() { openPane(tocPane); });
+  document.getElementById('nav-close').addEventListener('click', closeAll);
+  document.getElementById('toc-close').addEventListener('click', closeAll);
+  backdrop.addEventListener('click', closeAll);
+})();
+</script>
