@@ -34,17 +34,17 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="document-level-extraction-ai-assisted-metadata"></a><span class="toc-tooltip">Metadata Extraction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="document-level-extraction-ai-assisted-metadata"></a><span class="toc-tooltip">Metadata Extraction</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="extracting-metadata-with-an-llm-via-api"></a><span class="toc-tooltip">LLM Prompting</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="building-a-taxonomy-from-ai-tags"></a><span class="toc-tooltip">Taxonomy Building</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="entity-level-extraction-named-entity-recognition-ner"></a><span class="toc-tooltip">NER for Chinese</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="entity-level-extraction-named-entity-recognition-ner"></a><span class="toc-tooltip">NER for Chinese</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="1-spacy-for-modern-chinese"></a><span class="toc-tooltip">spaCy (Modern)</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="2-markus-for-classical-chinese"></a><span class="toc-tooltip">MARKUS (Classical)</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="3-the-wyd-platform-pkudh"></a><span class="toc-tooltip">WYD Platform</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="using-llms-for-triple-extraction-linked-data"></a><span class="toc-tooltip">Linked Data Extraction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="using-llms-for-triple-extraction-linked-data"></a><span class="toc-tooltip">Linked Data Extraction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -159,6 +159,21 @@ Recent studies have evaluated the ability of LLMs to extract these complex tripl
     <li><a href="https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy">Corpus Analysis with spaCy</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/analyzing-multilingual-text-nltk-spacy-stanza">Analyzing Multilingual French and Russian Text using NLTK, spaCy, and Stanza</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/module-2-ocr/" class="module-nav-btn">
+    <span class="nav-label">← Previous</span>
+    <span class="nav-title">Module 2: OCR</span>
+  </a>
+  <a href="/databaseworkflows/module-4-apis/" class="module-nav-btn">
+    <span class="nav-label">Next →</span>
+    <span class="nav-title">Module 4: APIs</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>

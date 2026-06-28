@@ -34,18 +34,18 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="key-apis-for-china-studies"></a><span class="toc-tooltip">Key APIs</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="key-apis-for-china-studies"></a><span class="toc-tooltip">Key APIs</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="1-china-biographical-database-cbdb"></a><span class="toc-tooltip">CBDB</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="2-china-historical-geographic-information-system-chgis"></a><span class="toc-tooltip">CHGIS</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="3-wikidata-and-sparql"></a><span class="toc-tooltip">Wikidata & SPARQL</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="using-an-llm-to-write-api-scripts"></a><span class="toc-tooltip">LLM Scripting</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="using-an-llm-to-write-api-scripts"></a><span class="toc-tooltip">LLM Scripting</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="example-workflow-enriching-the-ccvg-dataset"></a><span class="toc-tooltip">CCVG Enrichment</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="example-workflow-querying-wikidata-with-sparql"></a><span class="toc-tooltip">SPARQL Workflow</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="handling-romanization-and-normalization"></a><span class="toc-tooltip">Normalization</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="when-there-is-no-api-web-scraping"></a><span class="toc-tooltip">Web Scraping</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="handling-romanization-and-normalization"></a><span class="toc-tooltip">Normalization</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="when-there-is-no-api-web-scraping"></a><span class="toc-tooltip">Web Scraping</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -147,6 +147,21 @@ You can use the exact same LLM-assisted workflow for scraping. Simply provide th
     <li><a href="https://programminghistorian.org/en/lessons/intro-to-beautiful-soup">Intro to Beautiful Soup</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/wikidata-query-service">Introduction to the Wikidata Query Service</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/module-3-extraction/" class="module-nav-btn">
+    <span class="nav-label">← Previous</span>
+    <span class="nav-title">Module 3: NER & Extraction</span>
+  </a>
+  <a href="/databaseworkflows/module-5-segmentation/" class="module-nav-btn">
+    <span class="nav-label">Next →</span>
+    <span class="nav-title">Module 5: Segmentation</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>

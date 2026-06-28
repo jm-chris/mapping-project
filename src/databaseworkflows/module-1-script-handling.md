@@ -34,13 +34,10 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="the-sample-dataset"></a><span class="toc-tooltip">The Sample Dataset</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="crash-course-script-handling"></a><span class="toc-tooltip">Script Handling</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot" data-target="encoding-pitfalls"></a><span class="toc-tooltip">Encoding Pitfalls</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot" data-target="character-simplification"></a><span class="toc-tooltip">Character Simplification</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot" data-target="script-specific-challenges"></a><span class="toc-tooltip">Script-Specific Challenges</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="the-sample-dataset"></a><span class="toc-tooltip">The Sample Dataset</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="crash-course-script-handling"></a><span class="toc-tooltip">Script Handling</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -141,6 +138,21 @@ Beyond Chinese, researchers working with the languages of the Qing empire and it
     <li><a href="https://programminghistorian.org/en/lessons/understanding-regular-expressions">Understanding Regular Expressions</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/intro-to-bash">Introduction to the Bash Command Line</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/" class="module-nav-btn">
+    <span class="nav-label">← Back to</span>
+    <span class="nav-title">All Modules</span>
+  </a>
+  <a href="/databaseworkflows/module-2-ocr/" class="module-nav-btn">
+    <span class="nav-label">Next →</span>
+    <span class="nav-title">Module 2: OCR</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>

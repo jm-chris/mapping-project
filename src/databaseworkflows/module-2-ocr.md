@@ -34,16 +34,16 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="evaluating-and-preparing-scans"></a><span class="toc-tooltip">Preparing Scans</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="evaluating-and-preparing-scans"></a><span class="toc-tooltip">Preparing Scans</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="image-pre-processing-requirements"></a><span class="toc-tooltip">Pre-Processing</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="batch-processing-with-imagemagick"></a><span class="toc-tooltip">ImageMagick Batch</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="selecting-the-right-ocr-tool"></a><span class="toc-tooltip">Selecting Tools</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="combining-tools-tesseract-and-google-vision"></a><span class="toc-tooltip">Combining Tools</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="llm-post-correction"></a><span class="toc-tooltip">LLM Post-Correction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="when-not-to-use-ocr"></a><span class="toc-tooltip">When NOT to OCR</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="selecting-the-right-ocr-tool"></a><span class="toc-tooltip">Selecting Tools</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="combining-tools-tesseract-and-google-vision"></a><span class="toc-tooltip">Combining Tools</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="llm-post-correction"></a><span class="toc-tooltip">LLM Post-Correction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="when-not-to-use-ocr"></a><span class="toc-tooltip">When NOT to OCR</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -166,6 +166,21 @@ OCR is not a universal solution. Before investing weeks into an OCR pipeline for
     <li><a href="https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract">OCR with Google Vision API and Tesseract</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files">Working with batches of PDF files</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/module-1-script-handling/" class="module-nav-btn">
+    <span class="nav-label">← Previous</span>
+    <span class="nav-title">Module 1: Script Handling</span>
+  </a>
+  <a href="/databaseworkflows/module-3-extraction/" class="module-nav-btn">
+    <span class="nav-label">Next →</span>
+    <span class="nav-title">Module 3: NER & Extraction</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>

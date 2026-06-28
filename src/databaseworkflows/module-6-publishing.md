@@ -34,18 +34,18 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="designing-the-metadata-schema"></a><span class="toc-tooltip">Metadata Schema</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="designing-the-metadata-schema"></a><span class="toc-tooltip">Metadata Schema</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="structuring-your-master-csv"></a><span class="toc-tooltip">Master CSV</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="setting-up-omeka-classic"></a><span class="toc-tooltip">Omeka Setup</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="setting-up-omeka-classic"></a><span class="toc-tooltip">Omeka Setup</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="installation"></a><span class="toc-tooltip">Installation</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="installing-core-plugins"></a><span class="toc-tooltip">Core Plugins</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="running-the-bulk-import"></a><span class="toc-tooltip">Bulk Import</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="configuring-chinese-full-text-search"></a><span class="toc-tooltip">Chinese Search</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="configuring-chinese-full-text-search"></a><span class="toc-tooltip">Chinese Search</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="apache-solr-and-the-smart-chinese-analyzer"></a><span class="toc-tooltip">Apache Solr</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="advanced-search-as-a-fallback"></a><span class="toc-tooltip">Advanced Search</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -172,6 +172,21 @@ Ensure users have access to Omeka's built-in **Advanced Search** interface. This
     <li><a href="https://programminghistorian.org/en/lessons/up-and-running-with-omeka">Up and Running with Omeka.net</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/creating-an-omeka-exhibit">Creating an Omeka Exhibit</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/module-5-segmentation/" class="module-nav-btn">
+    <span class="nav-label">← Previous</span>
+    <span class="nav-title">Module 5: Segmentation</span>
+  </a>
+  <a href="/databaseworkflows/" class="module-nav-btn">
+    <span class="nav-label">← Back to</span>
+    <span class="nav-title">All Modules</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>

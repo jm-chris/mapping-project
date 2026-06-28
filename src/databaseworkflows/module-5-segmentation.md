@@ -34,16 +34,16 @@ header:
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="segmentation-and-tokenization"></a><span class="toc-tooltip">Segmentation</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="prerequisites"></a><span class="toc-tooltip">Prerequisites</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="segmentation-and-tokenization"></a><span class="toc-tooltip">Segmentation</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="modern-chinese-jieba"></a><span class="toc-tooltip">Jieba (Modern)</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="classical-chinese-wyd-and-specialized-tools"></a><span class="toc-tooltip">WYD (Classical)</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="text-normalization-as-data-cleaning"></a><span class="toc-tooltip">Normalization</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="text-normalization-as-data-cleaning"></a><span class="toc-tooltip">Normalization</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="reconciling-romanization-variants"></a><span class="toc-tooltip">Romanization</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="standardizing-character-forms"></a><span class="toc-tooltip">Character Forms</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="deduplication-and-date-standardization"></a><span class="toc-tooltip">Date Standardization</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
@@ -164,6 +164,21 @@ By running this normalization pass, you ensure that your dataset can be sorted c
     <li><a href="https://programminghistorian.org/en/lessons/normalizing-data">Normalizing Textual Data with Python</a> (Programming Historian)</li>
     <li><a href="https://programminghistorian.org/en/lessons/counting-frequencies">Counting Word Frequencies with Python</a> (Programming Historian)</li>
   </ul>
+  <div class="dataset-cite">
+    <strong>Dataset Used in This Module</strong>
+    East Asian Library, University Library System, University of Pittsburgh. <em>Contemporary Chinese Village Gazetteer Data (CCVG Data)</em>. Accessed June 2026. <a href="https://www.chinesevillagedata.library.pitt.edu/">https://www.chinesevillagedata.library.pitt.edu/</a>
+  </div>
+</div>
+
+<div class="module-nav-footer">
+  <a href="/databaseworkflows/module-4-apis/" class="module-nav-btn">
+    <span class="nav-label">← Previous</span>
+    <span class="nav-title">Module 4: APIs</span>
+  </a>
+  <a href="/databaseworkflows/module-6-publishing/" class="module-nav-btn">
+    <span class="nav-label">Next →</span>
+    <span class="nav-title">Module 6: Publishing</span>
+  </a>
 </div>
 
 <h2 id="references">References</h2>
