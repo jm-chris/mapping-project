@@ -45,16 +45,16 @@ Manually reading thousands of documents to extract basic cataloging information 
 You can use a Python script to pass the raw text of each document to an LLM via its API. By crafting a strict prompt, you instruct the LLM to read the Chinese text and output structured JSON data.
 
 <div class="workflow-note">
-<strong>Example Prompt Structure</strong><br>
-"You are an expert archivist of modern Chinese history. Read the following OCR text from a historical Chinese government document. Extract the following fields and return them as a JSON object only, with no other text:<br>
-- <strong>title:</strong> the formal document title in Chinese<br>
-- <strong>date:</strong> the document's date of issuance (YYYY-MM-DD format)<br>
-- <strong>issuing_authority:</strong> the government organ or committee that issued the document<br>
-- <strong>summary:</strong> a 2-sentence English summary of the document's contents<br>
-- <strong>tags:</strong> a list of 3-5 thematic subject tags in English (e.g. 'Land Reform', 'Sent-down Youth')"
+<strong>Example: Extracting CCVG Village Data</strong><br>
+Imagine you only had the raw scanned pages of the village gazetteers, rather than the structured CCVG dataset. You could use an LLM to generate the <code>ccvg_village_information.csv</code> table directly from the text. Your prompt would look like this:<br><br>
+"You are an expert archivist. Read the following OCR text from a Chinese village gazetteer. Extract the following fields and return them as a JSON object only, with no other text:<br>
+- <strong>Village_Name_Chinese:</strong> the name of the village<br>
+- <strong>Province_Chinese:</strong> the province it belongs to<br>
+- <strong>Total_Area_mu:</strong> the total area of the village in mu (number only)<br>
+- <strong>Distance_to_County_km:</strong> distance to the county seat in km (number only)"
 </div>
 
-The following Python script demonstrates how to loop through a folder of searchable PDFs, extract the text layer using `pdfplumber`, send it to the OpenAI API, and save the returned metadata to a JSON file:
+The following Python script demonstrates how to loop through a folder of searchable gazetteer PDFs, extract the text layer using `pdfplumber`, send it to the OpenAI API, and save the returned metadata to a JSON file:
 
 ```python
 import os
@@ -73,9 +73,9 @@ def extract_text_from_pdf(pdf_path):
 
 <h3 id="building-a-taxonomy-from-ai-tags">Building a Taxonomy from AI Tags</h3>
 
-The `tags` field in the prompt above will generate a wide variety of thematic subjects. To make these useful for a database, you must review the full list, consolidate synonyms, and formalize them into a controlled vocabulary.
+If you asked the LLM to generate subject tags for the gazetteer texts, it would produce a wide variety of thematic subjects. To make these useful for a database, you must review the full list, consolidate synonyms, and formalize them into a controlled vocabulary.
 
-For example, the LLM might generate "Sent-down Youth", "Rustication", "Xiaxiang Movement", and "Youth Resettlement". You should standardize these to a single preferred term (e.g., "Sent-down Youth") across your dataset.
+For example, when reading the population sections of the CCVG gazetteers, the LLM might generate tags like "Out-migration", "Urbanization", "Labor migration", and "Going to Shenzhen". You should standardize these to a single preferred term (e.g., "Labor Migration") across your dataset.
 
 <div class="workflow-warning">
 <strong>The Hallucination Warning</strong><br>

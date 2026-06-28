@@ -60,14 +60,14 @@ Recent advancements have produced tools specifically trained on classical corpor
 Once text is segmented or extracted into a dataset, it must be normalized. Normalization is the process of resolving inconsistencies so that a computer recognizes identical concepts as identical data points.
 
 <h3 id="reconciling-romanization-variants">Reconciling Romanization Variants</h3>
-When combining datasets from different eras or institutions, you will frequently encounter competing romanization systems for the same names or places (e.g., "Peking" vs. "Beijing", "Mao Tse-tung" vs. "Mao Zedong").
+When combining datasets from different eras or institutions, you will frequently encounter competing romanization systems for the same names or places. Look at the `Province_Pinyin` column in our sample `ccvg_village_information.csv` data: you will see "Kwangtung" (Wade-Giles) alongside "Guangdong" (Pinyin).
 
 To normalize a dataset programmatically, you can use an LLM or a Python script with a lookup dictionary to convert Wade-Giles, Yale, or EFEO spellings to standard Hanyu Pinyin [4]. For Tibetan, ensure all transliterated fields conform strictly to the Extended Wylie standard [5].
 
 <h3 id="standardizing-character-forms">Standardizing Character Forms</h3>
-As detailed in <a href="/databaseworkflows/module-1-script-handling/">Module 1</a>, the mixture of Traditional and Simplified characters, as well as historical variants, will fracture your data. 
+As detailed in <a href="/databaseworkflows/module-1-script-handling/">Module 1</a>, the mixture of Traditional and Simplified characters will fracture your data. Our sample dataset intentionally contains both 广东省 and 廣東省 in the `Province_Chinese` column. If you sort or group by this column in a database, the two will be treated as entirely different provinces.
 
-If you have a column of names in a spreadsheet, you can use the Python library `OpenCC` (Open Chinese Convert) to batch-convert the entire column to a single standard (either Traditional or Simplified) in seconds:
+You can use the Python library `OpenCC` (Open Chinese Convert) to batch-convert the entire column to a single standard (either Traditional or Simplified) in seconds:
 
 ```python
 import opencc
@@ -82,14 +82,14 @@ df['Name_Normalized'] = df['Name'].apply(lambda x: converter.convert(str(x)))
 df.to_csv('clean_data.csv', index=False)
 ```
 
-<h3 id="deduplication-and-date-standardization">Deduplication and Date Standardization</h3>
-Historical datasets often contain duplicate entries with slight variations, or dates written in varying formats (e.g., "1966年5月16日", "May 16, 1966", "1966-05-16").
+<h3 id="deduplication-and-date-standardization">Date Standardization</h3>
+Historical datasets often contain dates written in varying formats. Look at the `Year` column in our sample `ccvg_population.csv` data: while most entries are standard four-digit years (e.g., "1978"), one entry uses Republican era notation ("民国三十八年"). If you attempt to graph population over time, this non-numeric string will break your visualization.
 
 <div class="workflow-note">
 <strong>Using an LLM Agent for Normalization</strong><br>
 You can use an LLM via API to clean and standardize messy columns in a CSV.<br><br>
 <em>Example Prompt:</em><br>
-"The following is a list of historical dates extracted from Chinese documents. They are in various formats. Please convert every date into the ISO 8601 standard format (YYYY-MM-DD). If a date only contains a year and month, format it as YYYY-MM. If the date is invalid or unclear, return 'Unknown'. Return only the standardized list."
+"The following is a list of historical dates and years extracted from the CCVG dataset. They are in various formats, including Chinese era names. Please convert every date into a standard four-digit Gregorian year (YYYY). For example, '民国三十八年' should become '1949'. If the date is invalid or unclear, return 'Unknown'. Return only the standardized list."
 </div>
 
 By running this normalization pass, you ensure that your dataset can be sorted chronologically and queried accurately when you publish it to a database or archive platform.

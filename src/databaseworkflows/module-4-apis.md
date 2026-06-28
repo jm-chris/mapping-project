@@ -58,25 +58,25 @@ You do not need to know how to write Python or SPARQL to use these APIs. You can
 
 The key is writing a highly specific prompt that provides the LLM with the API documentation and your exact data requirements.
 
-<h3 id="example-workflow-querying-cbdb-for-a-list-of-names">Example Workflow: Querying CBDB for a List of Names</h3>
+<h3 id="example-workflow-querying-cbdb-for-a-list-of-names">Example Workflow: Enriching the CCVG Dataset</h3>
 
-Suppose you have a CSV file containing 50 names of Ming dynasty officials, and you want to retrieve their birth years, index years, and native places from CBDB.
+Suppose you want to enrich our sample CCVG dataset. You have the `ccvg_village_information.csv` file, and you want to know the precise latitude and longitude of the county seat for each village to compare it against the village's own coordinates. You can use the CHGIS API to look up the historical coordinates for each county name in your dataset.
 
 **Step 1: Write the Prompt for the LLM**
 Provide the LLM with your goal, the input format, the desired output format, and the API documentation.
 
 <div class="workflow-note">
 <strong>Prompt Template</strong><br>
-"I am a historian working with a list of Chinese names in a file called <code>ming_officials.csv</code> (column header: 'Name'). I need a Python script that reads this list, queries the China Biographical Database (CBDB) API for each name, and saves the results to a new CSV file.<br><br>
-Here is the CBDB API documentation for querying by name and returning JSON:<br>
-<code>https://cbdb.fas.harvard.edu/cbdbapi/person.php?name=[NAME]&o=json</code><br><br>
+"I am working with a dataset of Chinese villages in a file called <code>ccvg_village_information.csv</code>. The file contains a column called 'County_Pinyin'. I need a Python script that reads this list, queries the China Historical Geographic Information System (CHGIS) API for each county name, and saves the results to a new CSV file.<br><br>
+Here is the CHGIS API documentation for querying by Pinyin name:<br>
+<code>https://chgis.fas.harvard.edu/api/placenames/search?name_py=[NAME]</code><br><br>
 The script should:<br>
-1. Loop through the names in the CSV.<br>
+1. Loop through the unique county names in the CSV.<br>
 2. Make a GET request to the API for each name.<br>
-3. Parse the JSON response to extract the 'EngName', 'ChName', 'IndexYear', and 'NativePlace'.<br>
-4. Handle errors gracefully (e.g., if the API returns no data for a name, write 'Not Found' in the output).<br>
+3. Parse the JSON response to extract the first result's 'x_coord' (longitude) and 'y_coord' (latitude).<br>
+4. Handle errors gracefully (e.g., if the API returns no data, write 'Not Found' in the output).<br>
 5. Include a 1-second delay between requests to avoid overloading the server.<br>
-6. Save the output to <code>cbdb_results.csv</code>.<br>
+6. Save the output to <code>county_coordinates.csv</code>.<br>
 Please provide the complete, runnable Python code."
 </div>
 
@@ -96,10 +96,10 @@ You can copy the generated code directly into the [Wikidata Query Service interf
 
 <h2 id="handling-romanization-and-normalization">Handling Romanization and Normalization</h2>
 
-When querying APIs, particularly by name, you will inevitably encounter the normalization issues discussed in <a href="/databaseworkflows/module-1-script-handling/">Module 1</a>. 
+When querying APIs, you will inevitably encounter the normalization issues discussed in <a href="/databaseworkflows/module-1-script-handling/">Module 1</a>. Look at our `ccvg_village_information.csv` sample data:
 
-*   **Pinyin vs. Wade-Giles:** If your source data uses Wade-Giles but the API expects Pinyin, you must convert your list before querying. You can ask your LLM coding agent to add a conversion step to your Python script using a lookup dictionary.
-*   **Variant Characters:** If querying by Chinese characters, an API may return no results if you use a variant character (e.g., 為) while the database uses the standard form (爲). Always normalize your input data to the standard expected by the specific database before running batch API calls.
+*   **Pinyin vs. Wade-Giles:** The CCVG data contains Wade-Giles romanization for some provinces (e.g., "Kwangtung" instead of "Guangdong"). If you pass "Kwangtung" to an API that expects standard Hanyu Pinyin, the query will fail. You must convert your list before querying. You can ask your LLM coding agent to add a conversion step to your Python script using a lookup dictionary.
+*   **Variant Characters:** The CCVG data contains both Traditional (廣東省) and Simplified (广东省) characters. If an API expects Simplified characters, querying with Traditional characters will often return zero results. Always normalize your input data to the standard expected by the specific database before running batch API calls.
 
 <h2 id="when-there-is-no-api-web-scraping">When There is No API: Web Scraping</h2>
 

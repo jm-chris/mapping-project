@@ -1,0 +1,31 @@
+Gazetteer_Code,Gazetteer_Title_Chinese,Village_Code,Village_Name_Chinese,Village_Name_Pinyin,Province_Chinese,Province_Pinyin,City_Chinese,City_Pinyin,County_Chinese,County_Pinyin,Total_Area_mu,Latitude,Longitude,Distance_to_County_km,Notes
+GD-001,玉岩村志,GD-001-V01,玉岩村,Yuyan Cun,广东省,Guangdong,梅州市,Meizhou,梅县区,Meixian,1240,24.2831,116.1234,12,
+GD-002,三秦村志,GD-002-V01,三秦村,San-ch'in Ts'un,廣東省,Kwangtung,廣州市,Canton,花都區,Huadu,890,23.4012,113.2201,8,Wade-Giles romanization
+GD-003,水南村志,GD-003-V01,水南村,Shuinan Cun,广东省,Guangdong,清远市,Qingyuan,英德市,Yingde,2100,24.1823,113.3901,25,
+SD-001,小黑石村志,SD-001-V01,小黑石村,Xiaoheishi Cun,山东省,Shandong,烟台市,Yantai,牟平区,Mouping,560,37.3845,121.5623,6,
+SD-002,刘李桥村志,SD-002-V01,刘李桥村,Liu-li-ch'iao Ts'un,山東省,Shantung,濟南市,Tsinan,歷城區,Licheng,430,36.6701,117.1234,15,Traditional chars; Wade-Giles
+SD-003,柳泉村志,SD-003-V01,柳泉村,Liuquan Cun,山东省,Shandong,淄博市,Zibo,淄川区,Zichuan,780,36.4512,117.8901,18,
+SC-001,龙门村志,SC-001-V01,龙门村,Longmen Cun,四川省,Sichuan,成都市,Chengdu,郫都区,Pidu,1560,30.8234,103.8901,22,
+SC-002,青杠村志,SC-002-V01,青杠村,Ch'ing-kang Ts'un,四川省,Szechwan,重慶市,Chungking,江北區,Jiangbei,920,29.5678,106.5234,9,Note: Chongqing was part of Sichuan until 1997
+SC-003,桃源村志,SC-003-V01,桃源村,Taoyuan Cun,四川省,Sichuan,乐山市,Leshan,犍为县,Jianwei,1890,29.2134,103.9012,31,
+HB-001,西柏坡村志,HB-001-V01,西柏坡村,Xibaipo Cun,河北省,Hopei,石家庄市,Shihchiachuang,平山县,Pingshan,340,38.6234,113.8901,45,Historical CCP site; Wade-Giles province
+HB-002,南庄村志,HB-002-V01,南庄村,Nanzhuang Cun,河北省,Hebei,保定市,Baoding,定兴县,Dingxing,510,39.2678,115.7012,12,
+HB-003,东赵村志,HB-003-V01,东赵村,Dongzhao Cun,河北省,Hebei,邯郸市,Handan,磁县,Cixian,670,36.3456,114.3789,19,
+YN-001,普洱村志,YN-001-V01,普洱村,Pu'er Cun,云南省,Yunnan,普洱市,Pu'er,思茅区,Simao,3400,22.7823,100.9801,8,Dai ethnic majority
+YN-002,大理村志,YN-002-V01,大理村,Dali Cun,雲南省,Yunnan,大理市,Tali,大理市,Dali,2780,25.6012,100.2345,3,Bai ethnic majority; Traditional chars
+YN-003,香格里拉村志,YN-003-V01,香格里拉村,Xianggelila Cun,云南省,Yunnan,迪庆藏族自治州,Diqing,香格里拉市,Shangri-La,8900,27.8234,99.7012,15,Tibetan ethnic majority
+XJ-001,吐鲁番村志,XJ-001-V01,吐鲁番村,Tulufan Cun,新疆维吾尔自治区,Xinjiang,吐鲁番市,Turpan,高昌区,Gaochang,4500,42.9456,89.1890,5,Uyghur majority
+XJ-002,喀什村志,XJ-002-V01,喀什村,Kashi Cun,新疆維吾爾自治區,Sinkiang,喀什地区,Kashgar,疏附县,Shufu,3200,39.4678,75.9901,22,Traditional chars; old romanization
+GS-001,拉卜楞村志,GS-001-V01,拉卜楞村,Labrang Cun,甘肃省,Kansu,甘南藏族自治州,Gannan,夏河县,Xiahe,6700,35.1923,102.5123,12,Tibetan majority; Wade-Giles province
+GS-002,张掖村志,GS-002-V01,张掖村,Zhangye Cun,甘肃省,Gansu,张掖市,Zhangye,甘州区,Ganzhou,1200,38.9234,100.4512,7,
+NM-001,锡林浩特村志,NM-001-V01,锡林浩特村,Xilinhot Cun,内蒙古自治区,Inner Mongolia,锡林郭勒盟,Xilingol,锡林浩特市,Xilinhot,12000,43.9512,116.0789,4,Mongolian majority
+NM-002,呼和浩特村志,NM-002-V01,呼和浩特村,Huhehaote Cun,內蒙古自治區,Nei Mongol,呼和浩特市,Hohhot,赛罕区,Saihan,890,40.8123,111.6234,11,Traditional chars
+FJ-001,永定村志,FJ-001-V01,永定村,Yongding Cun,福建省,Fukien,龙岩市,Longyan,永定区,Yongding,1340,24.7234,116.7345,18,Hakka region; Wade-Giles province
+FJ-002,南靖村志,FJ-002-V01,南靖村,Nanjing Cun,福建省,Fujian,漳州市,Zhangzhou,南靖县,Nanjing,980,24.5123,117.3567,14,Note: not Beijing's Nanjing district
+HN-001,韶山村志,HN-001-V01,韶山村,Shaoshan Cun,湖南省,Hunan,湘潭市,Xiangtan,韶山市,Shaoshan,670,27.9145,112.5234,28,Mao Zedong birthplace
+HN-002,凤凰村志,HN-002-V01,凤凰村,Fenghuang Cun,湖南省,Hunan,湘西土家族苗族自治州,Xiangxi,凤凰县,Fenghuang,2300,27.9456,109.5901,35,Miao ethnic majority
+ZJ-001,乌镇村志,ZJ-001-V01,乌镇村,Wuzhen Cun,浙江省,Chekiang,嘉兴市,Jiaxing,桐乡市,Tongxiang,780,30.7456,120.4901,20,Wade-Giles province
+ZJ-002,西塘村志,ZJ-002-V01,西塘村,Xitang Cun,浙江省,Zhejiang,嘉兴市,Jiaxing,嘉善县,Jiashan,560,30.9234,120.8901,25,
+JX-001,景德镇村志,JX-001-V01,景德镇村,Jingdezhen Cun,江西省,Kiangsi,景德镇市,Ching-te-chen,昌江区,Changjiang,1100,29.2789,117.1890,6,Porcelain region; mixed romanization
+QH-001,玉树村志,QH-001-V01,玉树村,Yushu Cun,青海省,Chinghai,玉树藏族自治州,Yushu,玉树市,Yushu,15600,32.9901,97.0123,0,Tibetan majority; county seat village
+GX-001,桂林村志,GX-001-V01,桂林村,Guilin Cun,广西壮族自治区,Kwangsi,桂林市,Kueilin,灵川县,Lingchuan,1450,25.2345,110.2901,18,Zhuang ethnic majority; Wade-Giles

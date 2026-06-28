@@ -38,7 +38,7 @@ With the encoding and script behaviors established in <a href="/databaseworkflow
 
 <h2 id="evaluating-and-preparing-scans">Evaluating and Preparing Scans</h2>
 
-Poor scan quality is the single leading cause of OCR failure. Before running any OCR software, scans must be evaluated and optimized. 
+Before you can extract the structured data we saw in the CCVG sample dataset, you must start with the raw images. The CCVG project digitized thousands of physical village gazetteers. Poor scan quality is the single leading cause of OCR failure. Before running any OCR software on such materials, scans must be evaluated and optimized. 
 
 <h3 id="image-pre-processing-requirements">Image Pre-Processing Requirements</h3>
 
@@ -110,11 +110,11 @@ If the OCR text is too degraded, the LLM may "hallucinate" and invent plausible-
 
 <h2 id="when-not-to-use-ocr">When Not to Use OCR</h2>
 
-OCR is not a universal solution. Before investing weeks into an OCR pipeline, consider whether it is the right approach for your material.
+OCR is not a universal solution. Before investing weeks into an OCR pipeline for a project like the CCVG, consider whether it is the right approach.
 
 1.  **A high-quality digital edition already exists:** For classical Chinese texts, check the Chinese Text Project (CText) or Kanripo before attempting to OCR a scanned block-printed edition.
 2.  **The text is highly degraded manuscript:** If the handwriting is idiosyncratic and the corpus is small, manual transcription will be faster and more accurate than attempting to train a custom HTR model.
-3.  **You only need metadata:** If you only need the title, author, and date of a document, do not OCR the entire 50-page file. Run OCR only on the first page to extract the necessary metadata, saving massive amounts of processing time.
+3.  **You only need metadata:** If you only need the title, author, and date of a gazetteer, do not OCR the entire 500-page book. Run OCR only on the title page and copyright page to extract the necessary metadata, saving massive amounts of processing time.
 
 <h2 id="references">References</h2>
 
