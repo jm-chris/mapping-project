@@ -1,9 +1,385 @@
 <style>
-/* ── Progress-aware sticky TOC (Timeline) ── */
+/* ─────────────────────────────────────────────
+   DATABASE WORKFLOWS — MODULE PAGE STYLES
+   Inspired by Programming Historian's clean,
+   readable single-column layout
+───────────────────────────────────────────── */
+
+/* ── Body width constraint (PH-style narrow column) ── */
+.article-page .page__content {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #1a1a1a;
+}
+
+/* ── Module header card ── */
+.module-header {
+  background: #f7f7f9;
+  border: 1px solid #e2e2e8;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  align-items: flex-start;
+}
+.module-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.module-header-meta span {
+  font-size: 0.82rem;
+  color: #555;
+  letter-spacing: 0.02em;
+}
+.module-header-meta strong {
+  font-size: 0.82rem;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.module-badge {
+  display: inline-block;
+  background: #2B3AA8;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-top: 0.15rem;
+}
+.module-badge.badge-green { background: #2d7a3a; }
+.module-badge.badge-amber { background: #b45309; }
+.module-badge.badge-dataset { background: #5b21b6; }
+
+/* ── Inline TOC (PH-style, at top of content) ── */
+.module-toc {
+  background: #f7f7f9;
+  border: 1px solid #e2e2e8;
+  border-radius: 4px;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.92rem;
+}
+.module-toc h4 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin: 0 0 0.6rem 0;
+  font-weight: 600;
+}
+.module-toc ol, .module-toc ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.module-toc li {
+  margin: 0.25rem 0;
+  line-height: 1.45;
+}
+.module-toc a {
+  color: #2B3AA8;
+  text-decoration: none;
+}
+.module-toc a:hover {
+  text-decoration: underline;
+}
+.module-toc ul {
+  margin-top: 0.25rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+/* ── Section headings ── */
+.article-page .page__content h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-top: 2.8rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #e2e2e8;
+  color: #111;
+}
+.article-page .page__content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+.article-page .page__content h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+/* ── Callout boxes (PH-inspired: left border + subtle bg) ── */
+.workflow-note, .workflow-warning, .workflow-tip, .workflow-example {
+  padding: 0.9rem 1.1rem;
+  margin: 1.75rem 0;
+  border-left: 4px solid;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95em;
+  line-height: 1.65;
+}
+.workflow-note {
+  border-left-color: #2B3AA8;
+  background-color: #f0f2fa;
+}
+.workflow-warning {
+  border-left-color: #c0392b;
+  background-color: #fdf3f2;
+}
+.workflow-tip {
+  border-left-color: #2d7a3a;
+  background-color: #f2faf3;
+}
+.workflow-example {
+  border-left-color: #5b21b6;
+  background-color: #f5f3ff;
+}
+.workflow-note > p:first-child,
+.workflow-warning > p:first-child,
+.workflow-tip > p:first-child,
+.workflow-example > p:first-child {
+  margin-top: 0;
+}
+.workflow-note > p:last-child,
+.workflow-warning > p:last-child,
+.workflow-tip > p:last-child,
+.workflow-example > p:last-child {
+  margin-bottom: 0;
+}
+.callout-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.workflow-note .callout-label { color: #2B3AA8; }
+.workflow-warning .callout-label { color: #c0392b; }
+.workflow-tip .callout-label { color: #2d7a3a; }
+.workflow-example .callout-label { color: #5b21b6; }
+
+/* ── Code blocks ── */
+.article-page .page__content pre {
+  background: #f4f4f6;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 1.5rem 0;
+}
+.article-page .page__content code {
+  font-size: 0.875em;
+  background: #f0f0f4;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: #1a1a1a;
+}
+.article-page .page__content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── Tables ── */
+.article-page .page__content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.75rem 0;
+}
+.article-page .page__content th {
+  background: #2B3AA8;
+  color: #fff;
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.article-page .page__content td {
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid #e8e8ec;
+  vertical-align: top;
+}
+.article-page .page__content tr:nth-child(even) td {
+  background: #f9f9fb;
+}
+
+/* ── Figures and images ── */
+.workflow-figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+.workflow-figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+.workflow-figure figcaption {
+  font-size: 0.84em;
+  color: #666;
+  margin-top: 0.6rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── Step-by-step numbered workflow ── */
+.workflow-steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0;
+}
+.workflow-steps li {
+  counter-increment: step-counter;
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 3.25rem;
+  margin-bottom: 0.75rem;
+  background: #f9f9fb;
+  border: 1px solid #e2e2e8;
+  border-radius: 4px;
+  line-height: 1.6;
+}
+.workflow-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #2B3AA8;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── Tool comparison grid ── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+.tool-card {
+  background: #fff;
+  border: 1px solid #e2e2e8;
+  border-radius: 5px;
+  padding: 1rem 1.1rem;
+}
+.tool-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
+  color: #2B3AA8;
+}
+.tool-card p {
+  font-size: 0.88rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.55;
+}
+.tool-card .tool-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+.tool-tag.free { background: #d1fae5; color: #065f46; }
+.tool-tag.paid { background: #fee2e2; color: #991b1b; }
+.tool-tag.freemium { background: #fef3c7; color: #92400e; }
+
+/* ── Further reading section ── */
+.further-reading {
+  background: #f7f7f9;
+  border: 1px solid #e2e2e8;
+  border-radius: 4px;
+  padding: 1.1rem 1.4rem;
+  margin-top: 3rem;
+  font-size: 0.92rem;
+}
+.further-reading h3 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+.further-reading ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.further-reading li {
+  margin: 0.35rem 0;
+  line-height: 1.5;
+}
+
+/* ── Module navigation footer ── */
+.module-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e2e2e8;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.module-nav-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2B3AA8;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #c7cde8;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.module-nav-footer a:hover {
+  background: #f0f2fa;
+}
+.module-nav-footer .nav-hub {
+  font-size: 0.82rem;
+  color: #888;
+  text-align: center;
+}
+
+/* ── Progress-aware sticky TOC rail ── */
 #toc-rail {
   position: fixed;
   top: 50%;
-  right: 18px;
+  right: 14px;
   transform: translateY(-50%);
   z-index: 999;
   display: flex;
@@ -13,8 +389,7 @@
 }
 #toc-rail .toc-track {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
@@ -43,8 +418,8 @@
   padding: 5px 0;
 }
 .toc-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #ccc;
   border: 2px solid #fff;
@@ -53,10 +428,7 @@
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
   display: block;
 }
-.toc-dot.h2-dot {
-  width: 10px;
-  height: 10px;
-}
+.toc-dot.h2-dot { width: 9px; height: 9px; }
 .toc-dot.active {
   background: #2B3AA8;
   box-shadow: 0 0 0 1px #2B3AA8;
@@ -64,13 +436,12 @@
 }
 .toc-tooltip {
   position: absolute;
-  right: 20px;
+  right: 18px;
   background: #1a1a1a;
   color: #fff;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   letter-spacing: 0.04em;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 3px;
   white-space: nowrap;
   pointer-events: none;
@@ -78,60 +449,10 @@
   transition: opacity 0.15s;
   z-index: 10;
 }
-.toc-dot-wrap:hover .toc-tooltip {
-  opacity: 1;
-}
+.toc-dot-wrap:hover .toc-tooltip { opacity: 1; }
 
-/* ── Workflow Callout Boxes ── */
-.workflow-note, .workflow-warning, .workflow-tip {
-  padding: 1rem 1.25rem;
-  margin: 1.5rem 0;
-  border-left: 4px solid;
-  border-radius: 0 4px 4px 0;
-  background-color: #f8f9fa;
-  font-size: 0.95em;
-}
-.workflow-note {
-  border-left-color: #2B3AA8;
-  background-color: #f0f2fa;
-}
-.workflow-warning {
-  border-left-color: #d9534f;
-  background-color: #fdf2f2;
-}
-.workflow-tip {
-  border-left-color: #5cb85c;
-  background-color: #f4fcf4;
-}
-.workflow-note strong, .workflow-warning strong, .workflow-tip strong {
-  color: #1a1a1a;
-  text-transform: uppercase;
-  font-size: 0.85em;
-  letter-spacing: 0.05em;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-/* ── Diagram & Graphic Containers ── */
-.workflow-diagram {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  text-align: center;
-}
-.workflow-diagram img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-.workflow-diagram figcaption {
-  font-size: 0.85em;
-  color: #666;
-  margin-top: 1rem;
-  font-style: italic;
+@media (max-width: 900px) {
+  #toc-rail { display: none; }
 }
 </style>
 
@@ -140,38 +461,28 @@ document.addEventListener('DOMContentLoaded', function() {
   var dots = document.querySelectorAll('.toc-dot');
   var progressBar = document.getElementById('toc-progress-bar');
   var rail = document.getElementById('toc-rail');
-  
   if (!dots.length || !rail) return;
-
-  // Build section map: dot index -> heading element
   var sections = [];
-  dots.forEach(function(dot, i) {
+  dots.forEach(function(dot) {
     var id = dot.getAttribute('data-target');
     var el = document.getElementById(id);
-    if (el) sections.push({ dot: dot, el: el, index: i });
+    if (el) sections.push({ dot: dot, el: el });
     dot.addEventListener('click', function() {
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
-
   function update() {
     var scrollTop = window.scrollY || document.documentElement.scrollTop;
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
     var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     if (progressBar) progressBar.style.height = progress + '%';
-
-    // Find active section
     var active = 0;
     for (var i = 0; i < sections.length; i++) {
-      var rect = sections[i].el.getBoundingClientRect();
-      if (rect.top <= 120) active = i;
+      if (sections[i].el.getBoundingClientRect().top <= 130) active = i;
     }
     dots.forEach(function(d) { d.classList.remove('active'); });
     if (sections[active]) sections[active].dot.classList.add('active');
   }
-
   window.addEventListener('scroll', update, { passive: true });
   update();
 });

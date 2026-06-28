@@ -12,45 +12,79 @@ header:
 
 {% include workflow_styles.html %}
 
+<div class="module-header">
+  <div class="module-header-meta">
+    <span>DIFFICULTY</span>
+    <strong>Beginner</strong>
+  </div>
+  <div class="module-header-meta">
+    <span>ESTIMATED TIME</span>
+    <strong>20 Minutes</strong>
+  </div>
+  <div class="module-header-meta">
+    <span>PREREQUISITES</span>
+    <strong>None</strong>
+  </div>
+  <div class="module-header-meta">
+    <span>DATASET</span>
+    <span class="module-badge badge-dataset">CCVG Gazetteer Data</span>
+  </div>
+</div>
+
 <div id="toc-rail">
   <div class="toc-track"></div>
   <div class="toc-progress" id="toc-progress-bar"></div>
   <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="introduction"></a><span class="toc-tooltip">Introduction</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="the-sample-dataset"></a><span class="toc-tooltip">The Sample Dataset</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="crash-course-script-handling"></a><span class="toc-tooltip">Crash Course: Script Handling</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="crash-course-script-handling"></a><span class="toc-tooltip">Script Handling</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="encoding-pitfalls"></a><span class="toc-tooltip">Encoding Pitfalls</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="character-simplification"></a><span class="toc-tooltip">Character Simplification</span></div>
   <div class="toc-dot-wrap"><a class="toc-dot" data-target="script-specific-challenges"></a><span class="toc-tooltip">Script-Specific Challenges</span></div>
-  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="references"></a><span class="toc-tooltip">References</span></div>
+  <div class="toc-dot-wrap"><a class="toc-dot h2-dot" data-target="further-reading"></a><span class="toc-tooltip">Further Reading</span></div>
 </div>
 
 <h2 id="introduction">Introduction</h2>
 
-For humanities researchers, the transition from reading a text to treating it as data often reveals invisible structural problems. A character that looks correct on screen may fail to match an identical-looking character in a search query; a spreadsheet of archival data may sort unpredictably; or a script that renders perfectly in a word processor may break a Python script. 
+For humanities researchers, the transition from reading a text to treating it as data often reveals invisible structural problems. A character that looks correct on screen may fail to match an identical-looking character in a search query; a spreadsheet of archival data may sort unpredictably; or a script that renders perfectly in a word processor may break a Python script.
 
 To make the workflows in these modules concrete, we will use a shared, realistic dataset that runs through all six modules. This module introduces the dataset and provides a crash course on the computational layer of working with Chinese, Tibetan, Mongolian, Manchu, and Uyghur materials.
 
+<div class="module-toc">
+  <h4>In this module</h4>
+  <ul>
+    <li><a href="#the-sample-dataset">The Sample Dataset: Contemporary Chinese Village Gazetteers</a></li>
+    <li><a href="#crash-course-script-handling">Crash Course: Script Handling for Computational Research</a>
+      <ul>
+        <li><a href="#encoding-pitfalls">Encoding Pitfalls: UTF-8 BOM and Han Unification</a></li>
+        <li><a href="#character-simplification">The Character Simplification Problem</a></li>
+        <li><a href="#script-specific-challenges">Script-Specific Challenges</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
 <h2 id="the-sample-dataset">The Sample Dataset: Contemporary Chinese Village Gazetteers</h2>
 
-Throughout these modules, we will work with a sample dataset drawn from the **Contemporary Chinese Village Gazetteer Data (CCVG Data)** project at the University of Pittsburgh [1]. Village gazetteers (村志) are vital primary sources that record statistical data on individual villages from 1949 to the present. 
+Throughout these modules, we will work with a sample dataset drawn from the **Contemporary Chinese Village Gazetteer Data (CCVG Data)** project at the University of Pittsburgh [1]. Village gazetteers (村志) are vital primary sources that record statistical data on individual villages from 1949 to the present.
 
 The CCVG project extracts this data into structured CSV files. Our sample dataset is a representative 30-village subset that intentionally preserves the "messiness" of real-world humanities data. It consists of two relational tables:
 
 **1. Village Information Table (`ccvg_village_information.csv`)**
 Contains static metadata for each village, including its name, location, and the gazetteer it was extracted from.
-*   **The Messiness:** This table contains a mix of Traditional and Simplified characters (e.g., 广东省 vs. 廣東省), competing romanization systems (Pinyin vs. Wade-Giles), and an invisible UTF-8 BOM encoding issue.
+* **The Messiness:** This table contains a mix of Traditional and Simplified characters (e.g., 广东省 vs. 廣東省), competing romanization systems (Pinyin vs. Wade-Giles), and an invisible UTF-8 BOM encoding issue.
 
 **2. Population Table (`ccvg_population.csv`)**
 Contains longitudinal demographic data, with multiple rows per village representing different years.
-*   **The Messiness:** This table contains missing values, inconsistent date formats (e.g., "1978" vs. "民国三十八年"), and inconsistent note fields.
+* **The Messiness:** This table contains missing values, inconsistent date formats (e.g., "1978" vs. "民国三十八年"), and inconsistent note fields.
 
-<div class="workflow-tip">
-<strong>Download the Sample Data</strong><br>
-You can download the sample CSV files here to follow along with the tutorials:
-<br><br>
-<a href="/assets/data/ccvg_village_information.csv" class="btn btn--primary">Download ccvg_village_information.csv</a>
-<a href="/assets/data/ccvg_population.csv" class="btn btn--primary">Download ccvg_population.csv</a>
-</div>
+<blockquote class="workflow-tip">
+  <span class="callout-label">Download the Sample Data</span>
+  <p>Download the sample CSV files to follow along with the tutorials in all six modules:</p>
+  <p>
+    <a href="/assets/data/ccvg_village_information.csv" class="btn btn--primary">Download ccvg_village_information.csv</a>&nbsp;
+    <a href="/assets/data/ccvg_population.csv" class="btn btn--primary">Download ccvg_population.csv</a>
+  </p>
+</blockquote>
 
 <h2 id="crash-course-script-handling">Crash Course: Script Handling for Computational Research</h2>
 
@@ -61,38 +95,52 @@ Before we can clean, analyze, or publish our sample dataset, we must understand 
 The foundation of modern digital text is Unicode. However, its implementation introduces common hurdles.
 
 **The UTF-8 BOM Problem**
+
 When saving a CSV file in Excel to be processed by a Python script, researchers often encounter an invisible character at the very beginning of the file. This is the Byte Order Mark (BOM). Many command-line tools do not expect it and will read the first column header incorrectly (e.g., `ï»¿Gazetteer_Code` instead of `Gazetteer_Code`). Our sample dataset intentionally includes a BOM to illustrate this.
 
-<div class="workflow-note">
-<strong>Best Practice</strong><br>
-Always save data files as "UTF-8 without BOM." If using Python to read a CSV, specify the encoding explicitly to strip it:
-<code>df = pd.read_csv('ccvg_village_information.csv', encoding='utf-8-sig')</code>
-</div>
+<blockquote class="workflow-note">
+  <span class="callout-label">Best Practice: Stripping the BOM</span>
+  <p>Always save data files as "UTF-8 without BOM." If using Python to read a CSV, specify the encoding explicitly to strip it:</p>
+  <p><code>df = pd.read_csv('ccvg_village_information.csv', encoding='utf-8-sig')</code></p>
+</blockquote>
 
 **Han Unification and Variant Codepoints**
+
 To save space, the Unicode consortium implemented "Han Unification," merging Chinese, Japanese, and Korean (CJK) characters that shared a common historical origin into single codepoints [2]. However, historical texts often use variant characters (異體字) that *were* assigned separate codepoints. For example, the standard character 爲 (U+9232) and its variant 為 (U+70BA) look very similar, but to a computer, they are completely different entities [3]. They will not match in a database search unless explicitly normalized.
 
 <h3 id="character-simplification">The Character Simplification Problem</h3>
 
-Our sample dataset contains both Simplified (广东省) and Traditional (廣東省) province names. The simplification of Chinese characters introduces a profound discontinuity in historical data pipelines. 
+Our sample dataset contains both Simplified (广东省) and Traditional (廣東省) province names. The simplification of Chinese characters introduces a profound discontinuity in historical data pipelines.
 
 **Second-Round Simplified Characters**
+
 Between 1977 and 1986, the PRC promulgated a "Second Round" of simplified characters (二简字) [4]. These appear frequently in grassroots documents from that decade. Because the second round was rescinded, many of these characters were never added to standard digital fonts. Standard OCR engines will either fail to recognize them or "correct" them to different characters.
 
 **Mixed-Script Documents**
+
 Early PRC documents frequently mix traditional and simplified characters within the same sentence. When setting up an OCR pipeline, it is essential to load both Traditional and Simplified language models simultaneously (e.g., `-l chi_sim+chi_tra` in Tesseract) to prevent the engine from forcing a uniform script assumption.
 
 <h3 id="script-specific-challenges">Script-Specific Challenges</h3>
 
 Beyond Chinese, researchers working with the languages of the Qing empire and its successor states face distinct computational hurdles.
 
-*   **Tibetan (Stacked Consonants):** Tibetan syllables are formed by stacking consonants vertically around a root letter. Because the vertical stacking is handled by the font rendering engine rather than being precomposed, OCR systems often struggle to determine the correct sequence, leading to high error rates [5].
-*   **Mongolian and Manchu (Vertical Encoding):** Traditional Mongolian and Manchu are written vertically. However, Unicode encodes Mongolian as a horizontal left-to-right script, relying on the application to rotate the text 90 degrees for display [6]. When extracting text from an OCR engine that reads vertically and pasting it into a spreadsheet that assumes horizontal text, the directional flow can break.
-*   **Uyghur (Right-to-Left Directionality):** Uyghur is written in a modified Arabic script, reading from right to left. Mixing right-to-left Uyghur text with left-to-right English metadata in a CSV creates bidirectional (BiDi) text rendering issues [7]. While the underlying string remains correct in memory, it will often display incorrectly on screen, making manual data cleaning difficult.
+| Script | Key Challenge | Practical Impact |
+|---|---|---|
+| **Tibetan** | Stacked consonants handled by font renderer, not Unicode | OCR systems struggle to determine correct consonant sequence, leading to high error rates [5] |
+| **Mongolian / Manchu** | Unicode encodes as horizontal L-to-R; display requires 90° rotation | Text direction breaks when pasting from OCR into spreadsheets [6] |
+| **Uyghur** | Arabic-script right-to-left directionality | Bidirectional (BiDi) text rendering issues in CSV files make manual cleaning difficult [7] |
 
-<div class="workflow-warning">
-<strong>LLMs and Low-Resource Scripts</strong><br>
-Large Language Models (LLMs) excel at processing modern Chinese, but their competence drops drastically for Classical Chinese, Tibetan, Mongolian, Manchu, and Uyghur. When using LLMs for data enrichment on low-resource scripts, transliterate the text into a standardized Latin-alphabet romanization <em>before</em> passing it to the LLM.
+<blockquote class="workflow-warning">
+  <span class="callout-label">Warning: LLMs and Low-Resource Scripts</span>
+  <p>Large Language Models (LLMs) excel at processing modern Chinese, but their competence drops drastically for Classical Chinese, Tibetan, Mongolian, Manchu, and Uyghur. When using LLMs for data enrichment on low-resource scripts, transliterate the text into a standardized Latin-alphabet romanization <em>before</em> passing it to the LLM.</p>
+</blockquote>
+
+<div class="further-reading">
+  <h3>Further Reading</h3>
+  <ul>
+    <li><a href="https://programminghistorian.org/en/lessons/understanding-regular-expressions">Understanding Regular Expressions</a> (Programming Historian)</li>
+    <li><a href="https://programminghistorian.org/en/lessons/intro-to-bash">Introduction to the Bash Command Line</a> (Programming Historian)</li>
+  </ul>
 </div>
 
 <h2 id="references">References</h2>
