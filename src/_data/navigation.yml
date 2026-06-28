@@ -21,7 +21,7 @@ main:
 main_sidebar:
   - title: "<h5><a href='/searchdirectory/'>DIRECTORY</a></h5>"
   - title: "<h5><a href='/libraryaccess/'>LIBRARY ACCESS</a></h5>"
-  - title: "<h5><a href='/databaseworkflows/'>DATABASE WORKFLOWS</a></h5><div style='margin-left: 1em; font-size: 0.85em;'>COMING SOON</div>"
+  - title: "<h5><a href='/databaseworkflows/'>DATABASE WORKFLOWS</a></h5><div style='margin-left: 1em; font-size: 0.8em; line-height: 1.8;'><a href='/databaseworkflows/module-1-script-handling/'>01 Script Handling</a><br><a href='/databaseworkflows/module-2-ocr/'>02 OCR</a><br><a href='/databaseworkflows/module-3-extraction/'>03 NER &amp; Metadata</a><br><a href='/databaseworkflows/module-4-apis/'>04 Open Data APIs</a><br><a href='/databaseworkflows/module-5-segmentation/'>05 Segmentation</a><br><a href='/databaseworkflows/module-6-publishing/'>06 Publishing</a></div>"
   - title: "<h5><a href='/news/'>NEWS</a></h5>"
   - title: "<h5><a href='/about/'>ABOUT</a></h5>"
   - title: "<h5><a href='https://www.acls.org/programs/luce-acls-program-in-china-studies/' target='_blank'>LUCE/ACLS PROGRAM IN CHINA STUDIES</a></h5>"
