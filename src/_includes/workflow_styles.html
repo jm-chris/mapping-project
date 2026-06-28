@@ -1,0 +1,178 @@
+<style>
+/* ── Progress-aware sticky TOC (Timeline) ── */
+#toc-rail {
+  position: fixed;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+#toc-rail .toc-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  z-index: 0;
+}
+#toc-rail .toc-progress {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #2B3AA8;
+  border-radius: 2px;
+  height: 0%;
+  z-index: 1;
+  transition: height 0.15s ease;
+}
+.toc-dot-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 0;
+}
+.toc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #ccc;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: block;
+}
+.toc-dot.h2-dot {
+  width: 10px;
+  height: 10px;
+}
+.toc-dot.active {
+  background: #2B3AA8;
+  box-shadow: 0 0 0 1px #2B3AA8;
+  transform: scale(1.3);
+}
+.toc-tooltip {
+  position: absolute;
+  right: 20px;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.toc-dot-wrap:hover .toc-tooltip {
+  opacity: 1;
+}
+
+/* ── Workflow Callout Boxes ── */
+.workflow-note, .workflow-warning, .workflow-tip {
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  border-radius: 0 4px 4px 0;
+  background-color: #f8f9fa;
+  font-size: 0.95em;
+}
+.workflow-note {
+  border-left-color: #2B3AA8;
+  background-color: #f0f2fa;
+}
+.workflow-warning {
+  border-left-color: #d9534f;
+  background-color: #fdf2f2;
+}
+.workflow-tip {
+  border-left-color: #5cb85c;
+  background-color: #f4fcf4;
+}
+.workflow-note strong, .workflow-warning strong, .workflow-tip strong {
+  color: #1a1a1a;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ── Diagram & Graphic Containers ── */
+.workflow-diagram {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  text-align: center;
+}
+.workflow-diagram img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.workflow-diagram figcaption {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 1rem;
+  font-style: italic;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var dots = document.querySelectorAll('.toc-dot');
+  var progressBar = document.getElementById('toc-progress-bar');
+  var rail = document.getElementById('toc-rail');
+  
+  if (!dots.length || !rail) return;
+
+  // Build section map: dot index -> heading element
+  var sections = [];
+  dots.forEach(function(dot, i) {
+    var id = dot.getAttribute('data-target');
+    var el = document.getElementById(id);
+    if (el) sections.push({ dot: dot, el: el, index: i });
+    dot.addEventListener('click', function() {
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  function update() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.height = progress + '%';
+
+    // Find active section
+    var active = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var rect = sections[i].el.getBoundingClientRect();
+      if (rect.top <= 120) active = i;
+    }
+    dots.forEach(function(d) { d.classList.remove('active'); });
+    if (sections[active]) sections[active].dot.classList.add('active');
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+});
+</script>

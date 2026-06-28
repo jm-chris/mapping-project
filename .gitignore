@@ -6,3 +6,6 @@ vendor
 .DS_Store
 pagemaster
 src/assets/files/mapping-project.csv
+# Sandbox dev scripts
+serve.sh
+setup.sh
